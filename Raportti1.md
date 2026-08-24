@@ -1,6 +1,5 @@
 # Johdanto:
 
-## mitä tehtiin ja miksi, mitä haluttiin saavuttaa
 Me asennettiin jo tunnin aikana linux koneelle. Minulla ei ollut entuudestaan linux asennettuna, joten seuraamalla annettuja ohjeita sain asennettua linux. Tavoitteena oli saada toimiva virtuaalinen linux kone asennettuna omalle koneelle, jolla voidaan suorittaa linux komentoja käyttäen linux käyttöjärjestelmä. 
 
 # Toteutus ja tulokset 
@@ -9,13 +8,20 @@ Me asennettiin jo tunnin aikana linux koneelle. Minulla ei ollut entuudestaan li
 Ensin asennettiin virtual box koneelle ja sen jälkeen loin virtual-machine sen sisällä nimellä linuxkone. Asetin muutamaa konfiguraatiota luonnin yhteyhdessä, kuten debian 64bit valinta, Koneen kovalevyn koon säätäminen. En valitettavasti ottanut kuvaa näistä vaiheista. 
 
 ## Debianin asennus
-Open laittaman linkin avulla latasin debianin uusin versio valmiiksi ja käynistin luomani virtuaalikone, muttei mennyt sujavasti vaan heitti virheen. Muilla kurssilaisilla oli myös sama ongelma. Se ratkaistiin kun käynnistin virtuaalikoneen uudelleen. Tässä vaiheessa asetin alku asetuksia, kuten suomenkielen näppäimistö ja käyttäjätunnuksen luonti. Painamalla install Debian sain asennettua virtuaalikoneeseen debian. 
+Open laittaman linkin avulla latasin debianin uusin versio valmiiksi ja käynistin luomani virtuaalikone, muttei mennyt sujavasti vaan heitti virheen. Muilla kurssilaisilla oli myös sama ongelma. Se ratkaistiin kun käynnistin virtuaalikoneen uudelleen. 
+
+<img width="1282" height="898" alt="image" src="https://github.com/user-attachments/assets/10ad18c5-dfd3-498b-8151-6d389a2afc65" />
+
+Tässä vaiheessa asetin alku asetuksia, kuten suomenkielen näppäimistö ja käyttäjätunnuksen luonti. Painamalla install Debian sain asennettua virtuaalikoneeseen debian. 
 <img width="1265" height="897" alt="image" src="https://github.com/user-attachments/assets/97c457e7-a517-4df4-9b95-30f967986a78" />
 
 
 ## jatko toimeenpiteet
 Debianin asennuksen jälkeen ohjeiden mukaisesti suoritin seuraavat komennot käyttöjärjestelmän päivittämiseksi: sudo apt-get update, sudo apt-get upgrade.
-Seuraamalla kurssin ohjeita, säädin asetukset niin että leikepöydälle kopioiminen koneelta virtuaalikoneeseen on mahdollista.  
+Seuraamalla kurssin ohjeita, säädin asetukset niin että leikepöydälle kopioiminen koneelta virtuaalikoneeseen on mahdollista. 
+<img width="1263" height="892" alt="image" src="https://github.com/user-attachments/assets/44b3e0aa-fc5a-40b6-960d-1612d4356cf2" />
+
+
 
 
 ## Tiivistelmä artikkelista (What Is Open Source Software and Why Use OSS?) ja Pohdinta
@@ -31,3 +37,4 @@ Opin asentamaan VirtualBoxin ja Debianin virtuaalikoneelle sekä käyttämään 
 Tavoite saavutettiin, koska sain toimivan Debian Linux -virtuaalikoneen asennettua omalle tietokoneelleni.
 
 ### Lähteet
+[artikkelin linkki](https://www.coursera.org/articles/what-is-open-source-software)
