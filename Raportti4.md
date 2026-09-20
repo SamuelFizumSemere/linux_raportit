@@ -13,10 +13,7 @@ Seuraavaksi asensin saatavilla olevat päivitykset komennolla:
 
 `sudo apt-get upgrade`
 
-Tämä päivittää järjestelmään asennettujen pakettien uusimmat versiot.
 
-
-Päivitysten jälkeen järjestelmä oli ajan tasalla.
 
 ---
 
@@ -26,11 +23,10 @@ Seuraavaksi tarkistin SSH-palvelimen tilan komennolla:
 
 `sudo systemctl status ssh`
 
---
+<img width="911" height="677" alt="image" src="https://github.com/user-attachments/assets/fcbe2e60-b67c-4186-810f-58c1a0c590a1" />
+
 
 SSH-palvelin oli käynnissä. SSH-palvelimen avulla voidaan muodostaa etäyhteys Linux-palvelimelle. SSH-clientillä puolestaan muodostetaan yhteyksiä muihin koneisiin.
-
-Teorian mukaan pilvipalveluiden virtuaalikoneissa SSH on yleensä valmiiksi käytössä, koska se on tärkeä tapa muodostaa etäyhteys palvelimelle. SSH-palvelimen toimintaa voidaan hallita `systemctl`-komennoilla.
 
 ---
 
@@ -40,99 +36,51 @@ Seuraavaksi määritin SSH-avaimilla kirjautumisen. SSH-avaimet koostuvat julkis
 
 `ssh-keygen`
 
---
+<img width="771" height="438" alt="image" src="https://github.com/user-attachments/assets/ef252574-f357-4dff-ad2b-b255424f3821" />
 
-Komento kysyi, mihin avain tallennetaan ja haluanko käyttää passphrasea. Käytin tässä tehtävässä oletusasetuksia.
 
-Avainpari tallentui `.ssh`-hakemistoon. Yksityinen avain on:
-
-`~/.ssh/id_rsa`
-
-ja julkinen avain:
-
-`~/.ssh/id_rsa.pub`
-
-Yksityistä avainta ei saa jakaa muille tai kopioida palvelimelle. Julkinen avain voidaan puolestaan kopioida palvelimelle. Teorian mukaan SSH käyttää yksityistä avainta todistamaan käyttäjän henkilöllisyyden ja palvelin tarkistaa sen julkisen avaimen avulla.
 
 ### Julkisen avaimen kopioiminen palvelimelle
 
 Kopioin julkisen SSH-avaimen Azure-palvelimelle komennolla:
 
-`ssh-copy-id linuxuser@<public_ip>`
+<img width="765" height="377" alt="image" src="https://github.com/user-attachments/assets/415c5ac7-73b0-447a-9896-65db536c451d" />
+
 
 --
 
-Tämän jälkeen kokeilin kirjautumista uudelleen:
+<img width="863" height="536" alt="image" src="https://github.com/user-attachments/assets/4b019c83-70a3-4112-9ec9-1f7afb8ebf72" />
 
-`ssh linuxuser@<public_ip>`
+salasana vaihdettu: 
 
---
+<img width="457" height="145" alt="image" src="https://github.com/user-attachments/assets/f0f8cff8-2e85-4131-80a4-684c039b8690" />
 
-Kirjautuminen onnistui ilman, että palvelimen salasanaa tarvitsi kirjoittaa.
+Testasin sitten, että se toimii oikein...
 
-Tämä tarkoittaa, että SSH-avainkirjautuminen toimii oikein.
 
 ---
 
 ## Apache2-web-palvelimen asennus
 
-Seuraavaksi asensin Apache2-web-palvelimen komennolla:
-
-`sudo apt-get install apache2`
-
---
+Asensin jo edellisessä tehtävässä apache2.
 
 Tämän jälkeen tarkistin Apache-palvelimen tilan:
 
-`sudo systemctl status apache2`
-
---
+<img width="825" height="458" alt="image" src="https://github.com/user-attachments/assets/283487a2-eb2e-44b3-a944-f1f498e9ca39" />
 
 Apache oli käynnissä.
 
-Seuraavaksi avasin selaimella osoitteen:
-
-`http://<public_ip>`
-
---
-
-Selaimessa näkyi Apache-palvelimen oletussivu, joten web-palvelin toimii.
-
-Testasin saman asian myös terminaalissa komennolla:
-
-`curl http://<public_ip>`
-
-[kuva]
-
-`curl` haki Apache-palvelimen palauttaman HTML-sisällön suoraan terminaaliin.
 
 ---
 
 ## Apache-oletussivun muuttaminen
 
-Seuraavaksi muutin Apache-palvelimen oletussivun sisällön tehtävänannon mukaiseksi.
+Muutin myös tämän sisällön edellisessä tehtävässä. 
 
-Käytin komentoa:
+<img width="897" height="637" alt="image" src="https://github.com/user-attachments/assets/69f6a9e4-6ab5-4504-9eb4-06ff09e6beaa" />
 
-`echo 'This is my test default page' | sudo tee /var/www/html/index.html`
 
---
-
-Komennossa `echo` tuottaa tekstin ja pipe `|` välittää sen `tee`-komennolle. `tee` kirjoittaa tekstin `index.html`-tiedostoon sudo-oikeuksilla.
-
-Testasin tämän jälkeen sivun uudelleen:
-
-`curl http://<public_ip>`
-
---
-
-Sivun sisältö muuttui tekstiksi:
-
-`This is my test default page`
-
-Testasin sivun myös selaimella.
-
---
+ sekä selaimessa että curl-komennolla
 
 ---
 
@@ -140,11 +88,9 @@ Testasin sivun myös selaimella.
 
 Seuraavaksi loin tehtävänannossa määritellyn hakemiston:
 
-`sudo mkdir -p /home/linuxuser/public-sites`
+<img width="912" height="260" alt="image" src="https://github.com/user-attachments/assets/4d3c59ff-8c07-459b-8560-c35470a3cf7c" />
 
---
 
-Hakemistoa tullaan käyttämään myöhemmin web-sisällön ylläpitämiseen ja seuraavissa tehtävissä TLS-varmenteiden kanssa.
 
 ---
 
@@ -152,59 +98,19 @@ Hakemistoa tullaan käyttämään myöhemmin web-sisällön ylläpitämiseen ja 
 
 ## UFW:n asennus
 
-Seuraavaksi asensin UFW-palomuurin komennolla:
-
-`sudo apt-get install ufw`
-
---
-
-UFW eli Uncomplicated Firewall on Linuxin palomuurityökalu. Sen avulla voidaan määrittää, mitä verkkoyhteyksiä palvelimelle sallitaan.
+Tämä on jo asennettu edellisessä tehtävässä. 
 
 ---
 
-## SSH-liikenteen salliminen
+## SSH-liikenteen, HTTP- ja HTTPS-liikenteen  salliminen
 
-Ennen kuin otin palomuurin käyttöön, sallin SSH-liikenteen portissa 22:
+<img width="915" height="517" alt="image" src="https://github.com/user-attachments/assets/014546f5-8ec0-47ef-a8fb-b1ac922f031e" />
 
-`sudo ufw allow 22/tcp`
 
---
+Lopuksi tarkistin palomuurin tilanteen
 
-Tämä on tärkeää, koska olen muodostanut yhteyden palvelimelle SSH:n avulla. Jos UFW otettaisiin käyttöön ennen SSH-portin sallimista, voisin lukita itseni ulos palvelimelta.
+Palomuurissa näkyivät sallitut portit. 
 
-Teorian mukaan SSH-portti pitää avata ennen UFW:n käyttöönottoa, jotta etäyhteys ei katkea.
-
----
-
-## HTTP- ja HTTPS-liikenteen salliminen
-
-Seuraavaksi sallin HTTP-liikenteen portissa 80:
-
-`sudo ufw allow 80/tcp`
-
---
-
-Sallin myös HTTPS-liikenteen portissa 443:
-
-`sudo ufw allow 443/tcp`
-
---
-
-Tämän jälkeen otin UFW-palomuurin käyttöön:
-
-`sudo ufw enable`
-
---
-
-Lopuksi tarkistin palomuurin tilanteen:
-
-`sudo ufw status verbose`
-
---
-
-Palomuurissa näkyivät sallitut portit 22, 80 ja 443.
-
-Azure-ympäristössä liikenne voi kulkea kahden palomuurikerroksen läpi. Ensimmäinen on pilvipalveluntarjoajan security group ja toinen on Linux-palvelimen oma UFW-palomuurI.
 
 ---
 
