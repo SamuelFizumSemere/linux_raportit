@@ -2,17 +2,16 @@
 
 Linux Server Basic Configuration
 
-HUOM! jouduin tämä tehtävän tekemään uudestaan kun unohdin painaa commit joten palautuksen mielessä alustavasi teen ...
+HUOM! jouduin tämä tehtävän tekemään kaksi kertaa kun unohdin painaa commit...  :)
 
 
 # Toteutus ja tulokset
 
 ## Järjestelmän päivittäminen
 
-Seuraavaksi asensin saatavilla olevat päivitykset komennolla:
+Ensinnäkin asensin saatavilla olevat päivitykset komennolla:
 
 `sudo apt-get upgrade`
-
 
 
 ---
@@ -120,21 +119,8 @@ Palomuurissa näkyivät sallitut portit.
 
 Seuraavaksi tarkistin virtuaalikoneen verkkoliitännät ja IP-osoitteet komennolla:
 
-`ip addr`
+<img width="920" height="381" alt="image" src="https://github.com/user-attachments/assets/7daaebbd-52a1-40e9-b1d5-255fee4eeaad" />
 
---
-
-Komennon tuloksessa näkyi muun muassa loopback-liitäntä `lo`, jonka IP-osoite on `127.0.0.1`.
-
-Lisäksi näkyi palvelimen verkkoliitäntä, jolla on yksityinen IP-osoite.
-
-Azure-virtuaalikoneessa `ip addr` ei näytä virtuaalikoneen julkista IP-osoitetta. Tämä johtuu siitä, että julkinen IP käsitellään Azure-verkon puolella eikä sitä ole suoraan määritetty Linux-käyttöjärjestelmän verkkoliitäntään.
-
-Julkisen IP-osoitteen pystyy tarkistamaan palvelimelta esimerkiksi komennolla:
-
-`curl ifconfig.me`
-
---
 
 ---
 
@@ -142,160 +128,18 @@ Julkisen IP-osoitteen pystyy tarkistamaan palvelimelta esimerkiksi komennolla:
 
 Seuraavaksi tarkistin palvelimen routing-taulun komennolla:
 
-`ip route`
+<img width="762" height="73" alt="image" src="https://github.com/user-attachments/assets/46bbb801-fe2c-4ff4-b34b-0902e58b33c3" />
 
--- 
-
-Tuloksessa näkyi oletusreitti `default via`, joka kertoo, minkä yhdyskäytävän kautta palvelin lähettää liikennettä muihin verkkoihin.
-
-Lisäksi näkyi palvelimen oman verkon reitti.
-
----
 
 ## Ping
 
 Testasin verkkoyhteyden toimivuutta komennolla:
 
-`ping 8.8.8.8`
+<img width="707" height="348" alt="image" src="https://github.com/user-attachments/assets/b34baf21-e9b3-40a5-a84c-586b11a9798c" />
 
---
 
-Ping onnistui ja palvelin sai vastauksia osoitteesta `8.8.8.8`.
-
-Pingillä voidaan testata, pääsevätkö paketit kohteeseen ja takaisin. Teorian mukaan onnistunut ping kertoo, että perusverkkoyhteys kohteeseen toimii.
-
----
-
-# Packet inspection
-
-Seuraavaksi tutkin verkkoliikennettä `ngrep`-ohjelmalla. `ngrep` näyttää verkkopaketteja reaaliajassa ja sen avulla voidaan tarkastella esimerkiksi HTTP-, SSH- ja ICMP-liikennettä.
-
-Asensin ngrep-ohjelman komennolla:
-
-`sudo apt-get install ngrep`
-
---
-
-Tässä tehtävässä käytin kahta SSH-terminaalia. Ensimmäisessä tarkkailin verkkoliikennettä ja toisessa generoin liikennettä esimerkiksi `curl`- tai `ping`-komennolla.
-
----
-
-# HTTP-liikenteen tarkastaminen ngrepillä
-
-Ensimmäisessä terminaalissa suoritin:
-
-`sudo ngrep -d eth0 -W byline "" host <ip-address> and port 80`
-
---
-
-Toisessa terminaalissa generoin HTTP-liikennettä komennolla:
-
-`curl http://<ip-address>`
-
---
-
-### Mitä HTTP-viestejä näkyi?
-
-Ngrepissä näkyi HTTP-liikennettä palvelimen ja asiakkaan välillä. HTTP-pyynnössä näkyi esimerkiksi `GET`-pyyntö, jolla selain tai `curl` pyytää palvelimelta verkkosivun sisältöä.
-
-### Näkyikö default web page -sivun sisältö?
-
-Kyllä, HTTP-liikenteessä pystyi näkemään myös palvelimen lähettämää sisältöä, koska tässä käytettiin tavallista HTTP-yhteyttä eikä HTTPS-yhteyttä.
-
-Tämä tarkoittaa, että HTTP-liikenne kulkee salaamattomana ja pakettien sisältöä voidaan tarkastella verkossa.
-
-[kuva]
-
-### Ngrep-komennon parametrien selitys
-
-Komennossa:
-
-`sudo ngrep -d eth0 -W byline "" host <ip-address> and port 80`
-
-`sudo` antaa tarvittavat oikeudet verkkoliikenteen tarkkailuun.
-
-`ngrep` käynnistää verkkopakettien tarkkailun.
-
-`-d eth0` määrittää verkkoliitännän, jota tarkkaillaan.
-
-`-W byline` näyttää pakettien sisältöä selkeämmin rivi kerrallaan.
-
-`""` tarkoittaa, ettei liikenteestä suodateta tiettyä tekstihakua.
-
-`host <ip-address>` rajoittaa tarkkailun määritettyyn IP-osoitteeseen.
-
-`port 80` rajoittaa liikenteen HTTP-porttiin 80.
-
----
-
-# SSH-liikenteen tarkastaminen
-
-Seuraavaksi tarkastelin SSH-liikennettä komennolla:
-
-`sudo ngrep -d eth0 -W byline "" port 22`
-
-[kuva]
-
-Tämän jälkeen muodostin SSH-yhteyden toisesta terminaalista tai generoin muuta SSH-liikennettä.
-
-[kuva]
-
-SSH-liikenteessä näkyi verkkopaketteja, mutta itse kirjautumiseen tai komentoihin liittyvä sisältö ei näkynyt samalla tavalla selkokielisenä kuin HTTP-liikenteessä.
-
-Tämä kertoo, että SSH on salattu protokolla. SSH:n tarkoituksena on mahdollistaa turvallinen etäkäyttö niin, että esimerkiksi käyttäjän salasanaa ja palvelimella annettuja komentoja ei voida lukea suoraan verkkoliikenteestä.
-
----
-
-# ICMP-liikenteen tarkastaminen ngrepillä
-
-Seuraavaksi tarkastelin ICMP-liikennettä komennolla:
-
-`sudo ngrep -d eth0 -W byline "" icmp`
-
-[kuva]
-
-Toisessa terminaalissa suoritin:
-
-`ping 8.8.8.8`
-
----
-
-Ngrep näytti ping-komennon aiheuttamaa ICMP-liikennettä.
-
-ICMP eli Internet Control Message Protocol on verkkoprotokolla, jota käytetään esimerkiksi verkkoyhteyden testaamiseen ja erilaisiin verkon virhe- ja tilaviestintään liittyviin tarkoituksiin.
-
-Ping käyttää ICMP:tä lähettämällä kohteelle pyyntöjä ja odottamalla vastauksia. Tämän avulla voidaan tarkistaa, onko kohteeseen toimiva verkkoyhteys.
-
-ICMP on tärkeä verkkoyhteyksien vianmäärityksessä, koska esimerkiksi `ping`-komennolla voidaan nopeasti tarkistaa, pääsevätkö paketit tiettyyn kohteeseen.
-
----
-
----
-
-# ICMP-liikenteen tarkastaminen tcpdumpilla
-
-Seuraavaksi tein saman ICMP-liikenteen tarkastelun `tcpdump`-ohjelmalla:
-
-`sudo tcpdump -i eth0 icmp`
-
- ---
-
-Vertailin tulosta ngrepin kanssa.
-
-Ngrep näyttää liikennettä enemmän tekstimuodossa ja pystyy näyttämään myös pakettien sisältöä. Tcpdump puolestaan näyttää verkkopakettien tietoja tiiviimmin, kuten pakettien lähde- ja kohdeosoitteita sekä protokollan.
-
-Molemmilla voidaan tarkastella verkkoliikennettä, mutta tässä tehtävässä tcpdump oli mielestäni selkeämpi ICMP-pakettien perusrakenteen tarkasteluun, kun taas ngrep sopii paremmin tietyn sisällön etsimiseen paketeista.
-
-
-
-
-# Keskeiset havainnot ja Pohdinta
-
---
-
-# Yhteenveto:
 
 
 ### Lähteet
 
-Linux Server Setup - Basic Configurations -kurssin teori materiaali.
+Kurssin teoria materiaali.
