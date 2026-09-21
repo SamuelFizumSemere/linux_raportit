@@ -41,13 +41,34 @@ dig tls-test008.linuxkurssi.xyz @8.8.8.8.
 
 ## index.html
 
-## Muut tiedostot
+Loin tiedostoja ja index.html. Muokkasin näitä sitten nanolla linuxuser-käyttäjänä. 
+
+<img width="817" height="517" alt="image" src="https://github.com/user-attachments/assets/e6ebd570-5351-45f3-a90c-8d575347c269" />
+
+
+<img width="812" height="515" alt="image" src="https://github.com/user-attachments/assets/c8a8bd08-2b35-4e95-9963-40d75ec10564" />
 
 ## VirtualHostin käyttöönotto
 
-# TLS Certificate
+Konfiguraatio tehty
+<img width="953" height="626" alt="image" src="https://github.com/user-attachments/assets/d5d0f796-a1f9-4d19-92f7-d692204bcdeb" />
+
+tarkistetaan apache: 
+
+<img width="791" height="315" alt="image" src="https://github.com/user-attachments/assets/881eefd2-d265-4eaf-a1af-f0cdff822489" />
+
+syntax ok !!!
 
 ## Certbotin asennus
+
+Asennetaan certbotin: 
+
+<img width="846" height="477" alt="image" src="https://github.com/user-attachments/assets/12636f74-e364-40af-9bad-765e46ca0d78" />
+
+aktivoitu kai :)
+
+<img width="820" height="335" alt="image" src="https://github.com/user-attachments/assets/818ceac1-d110-497c-9ca9-68261fe3aa83" />
+
 
 ## TLS-sertifikaatin luonti
 
