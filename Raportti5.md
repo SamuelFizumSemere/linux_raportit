@@ -59,40 +59,42 @@ tarkistetaan apache:
 
 syntax ok !!!
 
-## Certbotin asennus
+## Certbotin asennus ja TSL sertifikaatien luonti
 
 Asennetaan certbotin: 
 
 <img width="846" height="477" alt="image" src="https://github.com/user-attachments/assets/12636f74-e364-40af-9bad-765e46ca0d78" />
 
-aktivoitu kai :)
+aktivoitu/haettu kai :)
 
 <img width="820" height="335" alt="image" src="https://github.com/user-attachments/assets/818ceac1-d110-497c-9ca9-68261fe3aa83" />
 
 
-## TLS-sertifikaatin luonti
-
 ## HTTPS:n testaaminen
+
+ Testasin sivustoa selaimella HTTPS-osoitteella sekä komennolla muttei mennyt nappin :) 
+ vaikka apache on kunnossa. 
+
+<img width="818" height="185" alt="image" src="https://github.com/user-attachments/assets/401e0314-ac9b-4613-ae2d-2f6a84450824" />
+
+
 
 ## Certificate Transparency / crt.sh
 
+Jotain tässä meni pieleen kun en löytänyt mitään julkaistuja sertifikaatit. (... 
+
+
 ## Certificate Renewal
 
-# Monitoring
+<img width="836" height="191" alt="image" src="https://github.com/user-attachments/assets/73537779-5ec3-497c-adba-7596acd19b07" />
 
-## HTTPS-liikenteen monitorointi
 
-## HTTP-liikenteen monitorointi
-
-## HTTP → HTTPS redirectin poistaminen
-
-## Redirectin palauttaminen
 
 
 # Keskeiset havainnot ja Pohdinta
-Opin asentamaan VirtualBoxin ja Debianin virtuaalikoneelle sekä käyttämään Linuxin peruskomentoja. Haastavinta oli Debianin asennuksessa tullut virhe, mutta se ratkesi virtuaalikoneen uudelleenkäynnistyksellä. Muuten asennus onnistui melko helposti ohjeita seuraamalla.
+Opin juttuja kyllä mutta tuli niin paljon haasteita :)
 
 # Yhteenveto:
-Tavoite saavutettiin, koska sain toimivan Debian Linux -virtuaalikoneen asennettua omalle tietokoneelleni.
+Tavoite saavutettiin, koska sain tehtyä melkein kaikki onnistuneesti.
 
 ### Lähteet
