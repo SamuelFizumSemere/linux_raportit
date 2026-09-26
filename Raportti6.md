@@ -1,5 +1,5 @@
 # Johdanto:
-
+Git + GitHub SSH
 
 # Toteutus ja tulokset 
 
@@ -43,15 +43,39 @@ Tarkistetaan jos yhteys on onnistunut :
 <img width="953" height="552" alt="image" src="https://github.com/user-attachments/assets/2c64e871-6279-4f69-a296-53ab212fb818" />
 
 
-## 
+## Kloonataan test repository SSH:lla
+
+<img width="901" height="295" alt="image" src="https://github.com/user-attachments/assets/7ae4823d-4d8d-4f3b-8497-edb34f0dd6ba" />
+
+on kloonattu onnistuneesti: 
+
+<img width="863" height="447" alt="image" src="https://github.com/user-attachments/assets/fcb299ee-9df1-4407-bd03-fac9798007f8" />
+
+Linux vinkejä muilta opiskelijoilta
+
+<img width="860" height="608" alt="image" src="https://github.com/user-attachments/assets/7786761d-a213-4c52-b26a-17bc32258fc3" />
+
+Teen oma linux-Vinkki 
+
+<img width="900" height="348" alt="image" src="https://github.com/user-attachments/assets/08a64aa2-9173-42f9-a067-dc698751d54c" />
+
+Gitin tila: 
+
+<img width="863" height="378" alt="image" src="https://github.com/user-attachments/assets/10a5b3dd-c12f-4a4e-a601-a61f8cc878c5" />
+
+En saanut jotenkin puskettua :( 
+<img width="925" height="537" alt="image" src="https://github.com/user-attachments/assets/0998d42b-119a-43ea-809f-fb01d1ae8841" />
+
+
+
 
 
 
 
 # Keskeiset havainnot ja Pohdinta
-Opin asentamaan VirtualBoxin ja Debianin virtuaalikoneelle sekä käyttämään Linuxin peruskomentoja. Haastavinta oli Debianin asennuksessa tullut virhe, mutta se ratkesi virtuaalikoneen uudelleenkäynnistyksellä. Muuten asennus onnistui melko helposti ohjeita seuraamalla.
+Opin käyttämään linux työkaluna. 
 
 # Yhteenveto:
-Tavoite saavutettiin, koska sain toimivan Debian Linux -virtuaalikoneen asennettua omalle tietokoneelleni.
+Tavoite osittain saavutettiin.
 
 ### Lähteet
